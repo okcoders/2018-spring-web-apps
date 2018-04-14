@@ -26,8 +26,6 @@ react?)
 * [axios](https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index)
 * [lodash](https://devhints.io/lodash)
 
-
-
 ## schedule
 
 ### class 1
@@ -37,6 +35,15 @@ react?)
 - http and rest
 - json
 - ajax
+
+### class 2
+- intro to react
+
+### class 3
+- advanced react
+
+### class 4
+- building our habit tracking app
 
 ## setup
 

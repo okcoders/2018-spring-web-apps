@@ -2,11 +2,32 @@
 
 ### topics
 - What are web apps and where did they come from?
+- overview of the tech and resources for this class
 - the html and css we need to make web apps
 - the javascript we need to make web apps
 - other stuff we need to make web apps
 
+### resources
+- [website vs web app](https://stackoverflow.com/questions/8694922/whats-the-difference-between-a-web-site-and-a-web-application)
+- [http](https://www.httpwatch.com/httpgallery/introduction/)
+- [rest](https://www.codecademy.com/articles/what-is-rest)
+- [json](https://www.w3schools.com/js/js_json_intro.asp)
+- [ajax](https://codeburst.io/a-gentle-introduction-to-ajax-1e88e3db4e79)
+- [fetch api](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+- [html tags](https://www.w3schools.com/tags/ref_byfunc.asp)
+- [http-server](https://www.npmjs.com/package/http-server)
+
+### class notes
+
 #### What are web apps and where did they come from
+
+tldr:
+- Server rendered static pages
+- Server rendered pages with js
+- Server rendered dynamic pages
+- Ajax and json from servers
+- Web app frameworks
 
 The first websites did not take any input from the user. You could not sign in,
 and the page did not change as you interacted with it. The most you could do was
@@ -45,7 +66,7 @@ complex by:
   on a map
 - taking form input from a user and sending that to the server
 
-Obviously I'm making those things up, but the idea is that web apps do a lot
+Obviously there is no hard definition, but the idea is that web apps do a lot
 more than just what a normal website does, and so we need better frameworks to
 handle this complicated logic that is now handled in the browser
 
@@ -53,7 +74,15 @@ handle this complicated logic that is now handled in the browser
 
 Here we don't need anything super advanced, by using a good component library,
 we just need to know basic css for styling those things and positioning them the
-way we want.
+way we want. You may want to review html, but here is some of the stuff you will
+need:
+
+- div
+- p
+- form, inputs, button
+- a
+- lists (ul, ol)
+- tables
 
 #### the javascript we need
 
@@ -61,12 +90,30 @@ We are using React.js to build our web apps, and to use react the way most
 people use it we need to know a few things from one of the newer versions of
 javascript, es6, namely:
 
-- classes
-- arrow functions
+- let and const
 - template strings
+- arrow functions
+- classes
+
+classes
+
+pieces of classes:
+- constructor (and new)
+- properties
+- methods
+- static methods
+- get and set
+- super
 
 #### other stuff we need
 
 - HTTP & REST
 - JSON
 - AJAX
+
+### in class exercise
+- Make a class called Automobile, and then make classes that extend it (like
+  truck, car, motorcycle), put methods in all of them, and share common methods
+  in automobile
+- use the fetch api and https://jsonplaceholder.typicode.com/ to make a DELETE
+  request

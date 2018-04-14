@@ -28,5 +28,20 @@
             console.log('woof!')
           }
         }
+
+        const string = '[1, 2, 3, 4]'
+        const string2 = '{"name": "zach", "age": 4}'
+
+        console.log(JSON.parse(string))
+        console.log(JSON.parse(string2))
+        console.log(JSON.stringify(JSON.parse(string)))
+
+        JSON.parse(string).map(n => n + 1).map(n => console.log(n))
+
+        //string = 'oops'
+
+        let number = 6
+        { let number = 4; console.log(number) }
+        console.log(number)
       </script>
 </html>
