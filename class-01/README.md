@@ -31,6 +31,12 @@ Through cookies we accomplish this, and the server can, when rendering a
 particular page, lookup information from a database and inject that into the
 html it sends back.
 
+This idea of server side creation of html pages was popular for a while, but
+soon a pattern emerged of relying more on the client to do the work. But, in
+order for the client to have the data from the database that is specific to a
+particular user, we have to send that in some format, and that is where json
+comes in, and ajax requests. 
+
 So what is a web app? A web app is any suitably complex website. One can become
 complex by:
 - requiring a login and making the site different per user
@@ -58,7 +64,6 @@ javascript, es6, namely:
 - classes
 - arrow functions
 - template strings
-- jsx
 
 #### other stuff we need
 

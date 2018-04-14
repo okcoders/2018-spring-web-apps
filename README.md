@@ -25,3 +25,21 @@ react?)
 * [react](https://devhints.io/react)
 * [axios](https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index)
 * [lodash](https://devhints.io/lodash)
+
+
+
+## schedule
+
+### class 1
+
+- What are web apps
+- javascript we need to use react
+- http and rest
+- json
+- ajax
+
+## setup
+
+- text editor: You can use whatever you want, be that visual code, sublime text, atom, etc.
+- google chrome: we need a web browser with good developer tools
+- [node](https://nodejs.org/en/)

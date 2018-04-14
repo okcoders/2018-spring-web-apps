@@ -1,0 +1,32 @@
+<!-- to serve this file -->
+<!-- npm install -g http-server -->
+<!-- run http-server, Then navigate to localhost:8080/<file-name> -->
+<html>
+      <script>
+        fetch('https://jsonplaceholder.typicode.com/posts')
+          .then(response => response.json())
+          .then(json => console.log(json))
+
+        class Animal {
+          constructor(name) {
+            this.name= name
+          }
+
+          speak() {
+            console.log(`my name is ${this.name}`)
+          }
+        }
+
+        class Dog extends Animal {
+          constructor(name, age) {
+            super(name)
+            this.age = age
+          }
+
+          bark() {
+            this.speak() 
+            console.log('woof!')
+          }
+        }
+      </script>
+</html>
