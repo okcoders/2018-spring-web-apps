@@ -1,0 +1,199 @@
+<!-- var myArray = [1, 2, 3, 4, 5] -->
+<!-- undefined -->
+<!-- var myObject = { name: 'zach', age: 4 } -->
+<!-- undefined -->
+<!-- myObject.age -->
+<!-- 4 -->
+<!-- myArray[0] -->
+<!-- 1 -->
+<!-- myObject["age"] -->
+<!-- 4 -->
+<!-- var keyLookup = "age" -->
+<!-- undefined -->
+<!-- myObject[keyLookup] -->
+<!-- 4 -->
+<!-- if (true) { console.log("it was true") } -->
+<!-- VM567:1 it was true -->
+<!-- undefined -->
+<!-- myArray -->
+<!-- (5) [1, 2, 3, 4, 5] -->
+<!-- for(var i = 0; i < myArray.length; i++) { -->
+<!--     var newArray = []; -->
+<!--     newArray.push(myArray[i] + 1) -->
+<!-- } -->
+<!-- 1 -->
+<!-- newArray -->
+<!-- [6]0: 6length: 1__proto__: Array(0) -->
+<!-- var newArray = [] -->
+<!-- undefined -->
+<!-- for(var i = 0; i < myArray.length; i++) { -->
+<!--     newArray.push(myArray[i] + 1) -->
+<!-- } -->
+<!-- 5 -->
+<!-- newArray -->
+<!-- (5) [2, 3, 4, 5, 6] -->
+<!-- myArray -->
+<!-- (5) [1, 2, 3, 4, 5] -->
+<!-- myArray.map(function(n) { return n + 1}) -->
+<!-- (5) [2, 3, 4, 5, 6] -->
+<!-- function addOne(n) { -->
+<!--     return n + 1 --> 
+<!-- } -->
+<!-- undefined -->
+<!-- myArray.map(addOne) -->
+<!-- (5) [2, 3, 4, 5, 6] -->
+<!-- var myArray = [1, 2, 3] -->
+<!-- undefined -->
+<!-- myArray = 4 -->
+<!-- 4 -->
+<!-- myArray -->
+<!-- 4 -->
+<!-- const myArray = [1, 2, 3] -->
+<!-- VM1318:1 Uncaught SyntaxError: Identifier 'myArray' has already been declared -->
+<!--     at <anonymous>:1:1 -->
+<!-- (anonymous) @ VM1318:1 -->
+<!-- const myOtherArray = [1, 2, 3] -->
+<!-- undefined -->
+<!-- myOtherArray = 4 -->
+<!-- VM1362:1 Uncaught TypeError: Assignment to constant variable. -->
+<!--     at <anonymous>:1:14 -->
+<!-- (anonymous) @ VM1362:1 -->
+<!-- let myArray = [1, 2] -->
+<!-- VM1413:1 Uncaught SyntaxError: Identifier 'myArray' has already been declared -->
+<!--     at <anonymous>:1:1 -->
+<!-- (anonymous) @ VM1413:1 -->
+<!-- let myotherotherarray = [1,2] -->
+<!-- undefined -->
+<!-- myotherotherarray = 4 -->
+<!-- 4 -->
+<!-- { -->
+<!--     var hi = 5 -->
+<!--     } -->
+<!-- undefined -->
+<!-- hi -->
+<!-- 5 -->
+<!-- let hi = 6 -->
+<!-- VM1558:1 Uncaught SyntaxError: Identifier 'hi' has already been declared -->
+<!--     at <anonymous>:1:1 -->
+<!-- (anonymous) @ VM1558:1 -->
+<!-- let myHi = 6 -->
+<!-- undefined -->
+<!-- myHi -->
+<!-- 6 -->
+<!-- { -->
+<!--     let myHi = 7 -->
+<!--     } -->
+<!-- undefined -->
+<!-- myHi -->
+<!-- 6 -->
+<!-- myArray.map(n => n + 1) -->
+<!-- VM1980:1 Uncaught TypeError: myArray.map is not a function -->
+<!--     at <anonymous>:1:9 -->
+<!-- (anonymous) @ VM1980:1 -->
+<!-- myArray = [1, 2, 3, 4, 5] -->
+<!-- (5) [1, 2, 3, 4, 5] -->
+<!-- myArray.map(n => n + 1) -->
+<!-- (5) [2, 3, 4, 5, 6] -->
+<!-- myArray.map((number, something) => number + 1) -->
+<!-- (5) [2, 3, 4, 5, 6] -->
+<!-- const name = "zach" -->
+<!-- undefined -->
+<!-- const bottles = 99 -->
+<!-- undefined -->
+<!-- console.log(bottles + " of beer on the wall" + bottles + "fdfd") -->
+<!-- VM2282:1 99 of beer on the wall99fdfd -->
+<!-- undefined -->
+<!-- console.log(`${bottles} of beer on the wall ${bottles} of beer`) -->
+<!-- VM2392:1 99 of beer on the wall 99 of beer -->
+<!-- undefined -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html>
+      <script>
+
+      class Animal {
+      	constructor(species, gender, size) {
+      		console.log("called")
+      		this.species = species
+      		this.gender = gender
+      		this.size = size
+      		this.hungerLevel = 10
+      	}
+
+      	speak() {
+      		console.log(`hello I'm a ${this.species} that is ${this.size} and I am ${this.gender}`)
+      	}
+
+      	eat(units) {
+      		this.hungerLevel -= units
+      		return `hunger level is now ${this.hungerLevel}`
+      	}
+
+      	exercise(units) {
+      		this.hungerLevel += units
+      		return `hunger level is now ${this.hungerLevel}`
+      	}
+      }
+
+      class Dog extends Animal {
+      	constructor(gender, size, breed, barkLevel) {
+      		super("dog", gender, size)
+      		this.breed = breed
+      		this.barkLevel = barkLevel
+      	}
+
+      	bark() {
+      		if(this.barkLevel > 5) {
+      			console.log("WOOF!")
+      		} else {
+      			console.log("woof")
+      		}
+      	}
+
+      	static smallDog(gender, breed) {
+      		return new Dog(gender, "small", breed, 4)
+      	}
+      }
+
+      const dog = new Dog("female", "large", "lab", 10)
+      const dog2 = new Dog("male", "small", "lab", 4)
+      const dog3ThatIsSameAsDog2 = Dog.smallDog("male", "lab")
+      console.log(dog.bark())
+      console.log(dog2.bark())
+      console.log(dog3ThatIsSameAsDog2.bark())
+
+
+      fetch('https://jsonplaceholder.typicode.com/posts')
+  			.then(response => response.json())
+  			.then(json => console.log(json))
+
+
+
+
+
+
+
+
+
+ 
+      </script>
+</html>
