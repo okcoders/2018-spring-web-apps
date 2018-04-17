@@ -9,13 +9,16 @@
 - state
 
 ### resources
-[create-react-app](https://github.com/facebook/create-react-app)
-[starting a new react app](https://github.com/facebook/create-react-app#creating-an-app)
-[styling in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-stylesheet)
-[images in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)
-[ajax in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#fetching-data-with-ajax-requests)
-[routing suggestions from react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-router)
-[react guide](https://reactjs.org/docs/hello-world.html)
+- [create-react-app](https://github.com/facebook/create-react-app)
+- [starting a new react app](https://github.com/facebook/create-react-app#creating-an-app)
+- [styling in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-stylesheet)
+- [images in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-images-fonts-and-files)
+- [ajax in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#fetching-data-with-ajax-requests)
+- [routing suggestions from react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-router)
+- [react guide](https://reactjs.org/docs/hello-world.html)
+- [components and props](https://facebook.github.io/react/docs/components-and-props.html)
+- [state](https://facebook.github.io/react/docs/state-and-lifecycle.html)
+- [class components api](https://facebook.github.io/react/docs/react-component.html)
 
 
 ## create-react-app
@@ -124,12 +127,152 @@ We suggest that you begin by typing:
 Happy hacking!
 ```
 
-Now just do ```yarn start``` (or you can do npm start), and you should now have a
-running server and your web browser should have opened.
+Now just do `yarn start` (or you can do npm start), after you cd into the
+new directory that was just made and you should now have a running server and
+your web browser should have opened.
 
 ![yarn start](https://github.com/okcoders/2018-spring-web-apps/blob/master/gifs/yarn_start.gif)
 
 
+### Jsx
+
+Ok so think of jsx as exactly the same as html. When you are "writing" jsx it
+will look like you are writing html, the jsx part is that you are writing html
+where you normally would be writing javascript, and in particular it is most
+closely related to a string. 
+
+For example you may see in the react docs:
+
+```
+const element = <div />;
+
+OR
+
+const element = <Welcome name="Sara" />;
+```
 
 
+Those two things look very simlar to something you might assign to a variable,
+but with quotes wrapped around the whole thing.
 
+Jsx allows us to put html directly in our javascript files, without having to
+treat them as strings.
+
+### Pure/Functional components
+
+One of the first things one learns about in the react ecosystem are functional
+components. The idea behind them is simple, and much like a function (i.e take
+in parameters and return a value), but it
+only has one signature, which follows:
+
+```
+props => html
+```
+
+i.e we take in props and produce html. Props here can actually be more than one
+thing, so really props you can think of as a bag that may contain many named
+things. Also, html here is not exactly right, we actually typically return jsx,
+which is a representation of html that allows us to inject javascript code.
+Caveats aside, we can still think of this a function that the react framework
+can call at any time to produce some html that can be rendered on a website.
+
+Here is a functional component that does not use any props:
+
+```
+// note the name of the component is camelCased with proper casing (first letter
+capitalized)
+const ExampleComponent = () => {
+  return <h1>Hello World</h1>
+}
+```
+
+and here is one that does
+
+```
+const ExampleWProps = (props) => {
+  // note the use of brackets to inject the props
+  return <h1>Hello {props.something}</h1>
+}
+```
+
+and here is one that takes multiple props
+
+```
+const ExampleWMultipleProps = (props) => {
+  return <h1>Hello, {props.firstSomething} {props.secondSomething}</h1>
+}
+```
+
+Once you make a component, you can call it within other components (assuming you
+exported and imported it properly) like so:
+
+```
+// note that I can "self close" my component by putting a slash in the opening tag
+<ExampleComponent />
+<ExampleWProps something="World!"/>
+<ExampleWMultipleProps firstSomething="a whole new" secondSomething="world"/>
+```
+
+### Class based components
+
+The second react family member we learn about are class based components. With
+these we lose our elegent pure function of ```props => html``` but gain
+significanly more power.
+
+The signature for class based components is still ```props => html```, but it is
+no longer pure. One could not look at the props and know what the html will be.
+One would also have to inspect the state, and any code written into the
+lifecycle methods.
+
+Here is a sneak peak, I don't expect any of this to make sense just yet:
+
+```
+import React, { Component } from 'react'
+
+class OkCodersExample extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { hello: "world!" }
+    // we only do the above in the constructor, anywhere else we use this.setState`
+  }
+
+  // all of these are methods we may use for various purposes
+  componentWillMount() {
+  }
+
+  componentDidMount() {
+  }
+
+  componentWillReceiveProps() {
+  }
+
+  shouldComponentUpdate() {
+  }
+
+  componentWillUpdate() {
+  }
+
+  componentDidUpdate() {
+  }
+
+  // we will always use this method to return the "html" for our component
+  render() {
+    return (
+      <h1>Hello {this.state.hello}</h1>
+    )
+  }
+}
+
+```
+
+### State
+
+State is a rather abstract term, but in react it is a specific member of class
+based components. We do 2 things with state:
+
+1. initialize state
+2. update state
+
+#### Initializing state
+
+Inside our constructor we assign an object with any keys and values we desire.

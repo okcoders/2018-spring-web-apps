@@ -2,7 +2,7 @@
 
 ## Practice using classes
 
-Make a new class called ```Instrument```
+Make a new class called `Instrument`
 
 The make other classes. You could make, for example:
 - Wood
@@ -50,7 +50,7 @@ Hit CTRL-C to stop the server
 
 You can then open localhost:8080 from your web browser
 
-Using the fetch api, make a ```POST``` request to this [website](https://jsonplaceholder.typicode.com/), you may find this [page](https://github.com/typicode/jsonplaceholder#how-to) useful.
+Using the fetch api, make a `POST` request to this [website](https://jsonplaceholder.typicode.com/), you may find this [page](https://github.com/typicode/jsonplaceholder#how-to) useful.
 
 ## attempt the react tutorial and read the docs
 - [tutorial](https://reactjs.org/tutorial/tutorial.html)
