@@ -127,7 +127,7 @@ Happy hacking!
 Now just do ```yarn start``` (or you can do npm start), and you should now have a
 running server and your web browser should have opened.
 
-![yarn start](https://github.com/okcoders/2018-spring-web-apps/tree/master/gifs/yarn_start.gif)
+![yarn start](https://github.com/okcoders/2018-spring-web-apps/blob/master/gifs/yarn_start.gif)
 
 
 
