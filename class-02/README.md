@@ -1,6 +1,6 @@
 # Class 02
 
-### topics
+## topics
 - homework review
 - starting new projects with create-react-app
 - jsx
@@ -8,7 +8,7 @@
 - react components
 - state
 
-### resources
+## resources
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [starting a new react app](https://github.com/facebook/create-react-app#creating-an-app)
 - [styling in react](https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md#adding-a-stylesheet)
@@ -21,10 +21,11 @@
 - [class components api](https://facebook.github.io/react/docs/react-component.html)
 
 
-## create-react-app
+### create-react-app
 
-If you have the latest version of node, you can from whatever directory you like
-to keep your code projects, the following:
+If you have the latest version (anything greater than 5.0) of npm (you can find
+that out by doing in the terminal npm -v), you can from whatever directory you
+like to keep your code projects, do the following:
 
 ```
 npx create-react-app my-new-project
@@ -100,8 +101,8 @@ success Saved 971 new dependencies.
 ├─ alphanum-sort@1.0.2
 ├─ amdefine@1.0.1
 ├─ ansi-align@2.0.0
-...
-✨  Done in 29.23s.
+...blah blah more stuff
+Done in 29.23s.
 
 Success! Created ok-coders-habit-tracker at /Users/zach/code/okcoders/ok-coders-habit-tracker
 Inside that directory, you can run several commands:
@@ -133,6 +134,25 @@ your web browser should have opened.
 
 ![yarn start](https://github.com/okcoders/2018-spring-web-apps/blob/master/gifs/yarn_start.gif)
 
+### Why react and what does it do?
+
+Before we jump into react, let's talk about why we need it:
+
+- mix/inject javascript data (think about json that we get back from ajax requests)
+  with html, and show it on a page
+- turn user input from a form into javascript data
+- respond/perform actions (think calling a function) in response to user interactions (e.g button clicks)
+- organize our web app (the code not the site itself) into logical pieces that
+  are reusable 
+- finally, updating our web page when what we want to show on it has changed
+  (rendering)
+
+React solves the above in these ways:
+- mixing javascript and html => [jsx](https://reactjs.org/docs/introducing-jsx.html)
+- user input into js => [forms](https://reactjs.org/docs/forms.html)
+- respond to events/actions on the page => [events](https://reactjs.org/docs/handling-events.html)
+- organizing our web app and updating the page when things change is handled by
+  the same thing/s which are => [components](https://reactjs.org/docs/components-and-props.html)
 
 ### Jsx
 
@@ -150,7 +170,6 @@ OR
 
 const element = <Welcome name="Sara" />;
 ```
-
 
 Those two things look very simlar to something you might assign to a variable,
 but with quotes wrapped around the whole thing.
@@ -171,10 +190,10 @@ props => html
 
 i.e we take in props and produce html. Props here can actually be more than one
 thing, so really props you can think of as a bag that may contain many named
-things. Also, html here is not exactly right, we actually typically return jsx,
-which is a representation of html that allows us to inject javascript code.
-Caveats aside, we can still think of this a function that the react framework
-can call at any time to produce some html that can be rendered on a website.
+things, or you can think of it as a plain javascript object. Also, html here is
+not exactly right, we actually typically return jsx. Caveats aside, we can
+still think of this as a function that the react framework can call at any time to
+produce some html that can be rendered on a website.
 
 Here is a functional component that does not use any props:
 
@@ -216,10 +235,10 @@ exported and imported it properly) like so:
 ### Class based components
 
 The second react family member we learn about are class based components. With
-these we lose our elegent pure function of ```props => html``` but gain
+these we lose our elegent pure function of `props => html` but gain
 significanly more power.
 
-The signature for class based components is still ```props => html```, but it is
+The signature for class based components is still `props => html`, but it is
 no longer pure. One could not look at the props and know what the html will be.
 One would also have to inspect the state, and any code written into the
 lifecycle methods.
@@ -276,3 +295,115 @@ based components. We do 2 things with state:
 #### Initializing state
 
 Inside our constructor we assign an object with any keys and values we desire.
+
+#### Updating State
+
+In certain places we can call this.setState to update our state
+
+### An example - starting our habit tracking app
+
+after doing `npx create-react-app habit-tracking`, cd into that new directory
+and delete everything in the src folder except index.css, index.js, and
+registerServiceWorker.js
+
+
+This get's us down to the basics of a react app, then make your injdex.js look
+like this:
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import registerServiceWorker from './registerServiceWorker';
+
+const App = () => {
+  return <h1> hello </h1>
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+
+```
+
+
+We can then add a new component that takes props as input and render that in our
+top level app component:
+
+```
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import registerServiceWorker from './registerServiceWorker';
+
+const App = () => {
+  return (
+    <div>
+      <HelloToSomeone someone="Zach" />
+    </div>
+  )
+}
+
+const HelloToSomeone = (props) => {
+  return <h1> hello {props.someone}, welcome to our habit tracker!</h1>
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+
+```
+
+
+Let's go a little further and take some user input. When we take user input, we
+need to store it somewhere, and so we need state. In other words there will be a
+point where we don't have user input, and then a point where we do, and we go
+from one state to another. React provides a component that has state, and we can
+change that state.
+
+Let's make a new class based (the kind that has state) component:
+
+```
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import registerServiceWorker from './registerServiceWorker';
+
+const App = () => {
+  return (
+    <div>
+      <HelloToSomeone someone="Zach" />
+      <HabitInput msg="I came from props!"/>
+    </div>
+  )
+}
+
+const HelloToSomeone = (props) => {
+  return <h1> hello {props.someone}, welcome to our habit tracker!</h1>
+}
+
+class HabitInput extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      msg: 'I came from state!'
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h2> class based! </h2>
+        <p> class based components can put state and props on the page!</p>
+        <p>{this.state.msg}</p>
+        <p>{this.props.msg}</p>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<App />, document.getElementById('root'));
+registerServiceWorker();
+
+```
+
+Alright, let's take some input from the user:
+
