@@ -16,12 +16,28 @@ const HelloToSomeone = (props) => {
   return <h1> hello {props.someone}, welcome to our habit tracker!</h1>
 }
 
+const ShowHabits = (props) => {
+  const habitListItems = props.habits.map(habitName => {
+    return <li>{habitName}</li>
+  })
+
+  return (
+    <div>
+      <h4> Look at all the habits you want to track!</h4>
+      <ol>
+        {habitListItems}
+      </ol>
+    </div>
+  )
+}
+
 class HabitInput extends Component {
   constructor(props) {
     super(props)
     this.state = {
       msg: 'I came from state!',
-      habitName: ''
+      habitName: '',
+      habits: []
     }
   }
 
@@ -31,6 +47,9 @@ class HabitInput extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    this.setState((prevState) => {
+      return { habitName: '', habits: [...prevState.habits, prevState.habitName] }
+    })
   }
 
   render() {
@@ -49,6 +68,7 @@ class HabitInput extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
+      {this.state.habits.length > 0 && <ShowHabits habits={this.state.habits} />}
       </div>
     )
   }
