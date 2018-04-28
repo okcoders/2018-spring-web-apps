@@ -2,9 +2,8 @@
 
 ## practice using react router
 
-Modify your blog site from last week to utilize more than one page that utilizes
-routes. You will
-need to pass state upwards
+Modify your blog site from last week so that it has more than one page that utilizes
+routes. You will need to pass state upwards
 
 suggested routes:
 - posts
