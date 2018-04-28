@@ -3,30 +3,44 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route, Link } from 'react-router-dom'
-
-function wrapHabit(habit) {
-  return <li>{habit}</li>
-}
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 
 const CurrentHabits = (props) => {
-  const liHabits = props.habits.map(wrapHabit)
+  const cards = props.habits.map((habit) => {
+    return (
+      <Card>
+        <CardHeader title={habit} />
+      </Card>
+    )
+  })
   return (
     <div>
-      <ol>
-       {liHabits}
-      </ol>
+    {cards}
     </div>
   )
 }
 
-class UserHabits extends Component {
+class Habits extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { }
+  }
+
+  render() {
+    return (
+      <div>
+       <CurrentHabits habits={this.props.habits}/>
+      </div>
+    )
+  }
+}
+
+class New extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
-      author: '',
-      body: '',
-      posts: []
+      habitName: ''
     }
   }
 
@@ -36,13 +50,9 @@ class UserHabits extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    // add habit name to the habits array
-    this.setState((prevState) => {
-      return {
-        habitName: '',
-        habits: [ ...prevState.habits, prevState.habitName]
-      }
-    })
+    this.props.new(this.state.habitName)
+    this.setState({ habitName: '' })
+    this.props.history.push('/habits')
   }
 
   render() {
@@ -55,7 +65,6 @@ class UserHabits extends Component {
           </label>
           <input type="submit" value="Submit" />
         </form>
-        <CurrentHabits habits={this.state.habits} />
       </div>
     )
   }
@@ -64,18 +73,33 @@ class UserHabits extends Component {
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      habits: []
+    }
+  }
+
+  new = (habit) => {
+    this.setState((prevState) => {
+      return {
+        habits: [ ...prevState.habits, habit]
+      }
+    })
   }
 
   render() {
     return (
       <div>
         <MuiThemeProvider>
-         <Router>
-           <Route path="/posts" component={Posts}/>
-           <Route path="/posts/new" component={New}/>
-           <Route path="/posts/:id" component={SpecificPost}/>
-         </Router
+         <BrowserRouter>
+          <div>
+           <ul>
+            <li><Link to="/habits" >habits</Link></li>
+            <li><Link to="/habits/new" >new habit</Link></li>
+           </ul>
+           <Route exact path="/habits" render={(props) => <Habits {...props} habits={this.state.habits}/>}/>
+           <Route exact path="/habits/new" render={(props) => <New {...props} new={this.new}/>}/>
+          </div>
+         </BrowserRouter>
         </MuiThemeProvider>
       </div>
     )
