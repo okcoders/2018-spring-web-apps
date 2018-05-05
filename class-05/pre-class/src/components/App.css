@@ -1,0 +1,14 @@
+.links {
+  background-color: #00bcd4;
+  padding: 10px;
+}
+
+.link {
+  margin: 10px;
+  color: blue;
+  text-decoration: none;
+}
+
+.active {
+  color: #ff5722cc;
+}
