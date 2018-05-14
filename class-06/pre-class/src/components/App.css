@@ -1,0 +1,16 @@
+
+.nav {
+  background-color: #00bcd4;
+  padding: 25px;
+}
+
+.nav-item {
+  margin: 10px;
+  color: #EEE;
+  text-decoration: none;
+  font-size: larger;
+}
+
+.active {
+  color: #ffeb3b;
+}
